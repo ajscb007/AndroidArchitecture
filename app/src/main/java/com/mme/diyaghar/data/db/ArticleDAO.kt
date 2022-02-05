@@ -2,7 +2,7 @@ package com.mme.diyaghar.data.db
 
 
 import androidx.room.*
-import com.anushka.newsapiclient.data.model.Article
+import com.mme.diyaghar.data.model.Article
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,6 +1,7 @@
 package com.mme.diyaghar.presentation.di
 
 import com.mme.diyaghar.BuildConfig
+import com.mme.diyaghar.data.api.APIService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,6 +20,12 @@ class NetModule {
              .addConverterFactory(GsonConverterFactory.create())
              .baseUrl(BuildConfig.BASE_URL)
              .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideNewsAPIService(retrofit: Retrofit):APIService{
+        return retrofit.create(APIService::class.java)
     }
 }
 

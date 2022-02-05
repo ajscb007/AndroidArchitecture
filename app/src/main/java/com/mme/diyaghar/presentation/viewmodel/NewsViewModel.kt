@@ -20,25 +20,23 @@ class NewsViewModel(
     private val getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
     private val saveNewsUseCase: SaveNewsUseCase
 ) : AndroidViewModel(app) {
-
     val newsHeadLines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
-    fun getNewsHeadlines(country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
+    fun getNewsHeadLines(country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
         newsHeadLines.postValue(Resource.Loading())
-        try {
-            if (isNetworkAvailable(app)) {
+        try{
+            if(isNetworkAvailable(app)) {
+
                 val apiResult = getNewsHeadlinesUseCase.execute(country, page)
                 newsHeadLines.postValue(apiResult)
-            } else {
+            }else{
                 newsHeadLines.postValue(Resource.Error("Internet is not available"))
             }
-        } catch (e: Exception) {
+
+        }catch (e:Exception){
             newsHeadLines.postValue(Resource.Error(e.message.toString()))
         }
-    }
 
-    fun saveArticle(article: Article) = viewModelScope.launch {
-        saveNewsUseCase.execute(article)
     }
 
     private fun isNetworkAvailable(context: Context?):Boolean{
@@ -68,6 +66,12 @@ class NewsViewModel(
         return false
 
     }
+
+    //local data
+    fun saveArticle(article: Article) = viewModelScope.launch {
+        saveNewsUseCase.execute(article)
+    }
+
 }
 
 

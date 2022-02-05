@@ -13,7 +13,7 @@ class RepositoryImpl(
     private val localDataSource: LocalDataSource
 ): Repository {
     override suspend fun getNewsHeadlines(country: String, page: Int): Resource<APIResponse> {
-        return responseToResource(remoteDataSource.getTopHeadlines())
+        return responseToResource(remoteDataSource.getTopHeadlines(country, page))
     }
 
     private fun responseToResource(response: Response<APIResponse>): Resource<APIResponse> {

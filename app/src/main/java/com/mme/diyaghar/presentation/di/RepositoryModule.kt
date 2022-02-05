@@ -14,6 +14,18 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class RepositoryModule {
 
+    @Singleton
+    @Provides
+    fun provideNewsRepository(
+        remoteDataSource: RemoteDataSource,
+        localDataSource: LocalDataSource
+    ): Repository {
+        return RepositoryImpl(
+            remoteDataSource,
+            localDataSource
+        )
+    }
+
 }
 
 
