@@ -2,6 +2,7 @@ package com.mme.diyaghar.presentation.di
 
 import com.mme.diyaghar.domain.repository.Repository
 import com.mme.diyaghar.domain.usecase.GetNewsHeadlinesUseCase
+import com.mme.diyaghar.domain.usecase.GetSavedNewsUseCase
 import com.mme.diyaghar.domain.usecase.SaveNewsUseCase
 import dagger.Module
 import dagger.Provides
@@ -26,6 +27,14 @@ class UseCaseModule {
         newsRepository: Repository
     ): SaveNewsUseCase {
         return SaveNewsUseCase(newsRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetSavedNewsUseCase(
+        repository: Repository
+    ): GetSavedNewsUseCase {
+        return GetSavedNewsUseCase(repository)
     }
 }
 

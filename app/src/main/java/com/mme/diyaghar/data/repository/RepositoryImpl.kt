@@ -6,6 +6,7 @@ import com.mme.diyaghar.data.repository.dataSource.LocalDataSource
 import com.mme.diyaghar.data.repository.dataSource.RemoteDataSource
 import com.mme.diyaghar.data.util.Resource
 import com.mme.diyaghar.domain.repository.Repository
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 class RepositoryImpl(
@@ -27,5 +28,9 @@ class RepositoryImpl(
 
     override suspend fun saveNews(article: Article) {
         localDataSource.saveArticleToDB(article)
+    }
+
+    override fun getSavedNews(): Flow<List<Article>> {
+        return localDataSource.getSavedArticles()
     }
 }

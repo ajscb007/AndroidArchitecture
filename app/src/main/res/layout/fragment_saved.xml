@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SavedFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSaved"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Saved fragment" />
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

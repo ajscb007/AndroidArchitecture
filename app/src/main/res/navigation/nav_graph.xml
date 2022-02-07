@@ -20,7 +20,7 @@
         android:label="fragment_saved"
         tools:layout="@layout/fragment_saved" >
         <action
-            android:id="@+id/action_savedFragment_to_infoFragment2"
+            android:id="@+id/action_savedFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
     </fragment>
     <fragment
